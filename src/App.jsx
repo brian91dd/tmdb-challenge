@@ -2,7 +2,7 @@ import React from 'react';
 import {
   BrowserRouter as Router, Switch, Route, Link,
 } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 
 import Home from './pages/home';
 import Detail from './pages/detail';
@@ -11,7 +11,7 @@ import NotFound from './pages/not-found';
 function App() {
   return (
     <Router>
-      <nav>
+      <nav className="nav">
         <ul>
           <li>
             <Link to="/">Home</Link>
