@@ -1,22 +1,57 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import './home.modules.scss';
-import useTmdMovies from '../../state/movies/hooks/use-tmdb-movie';
+import { useTmdMovies, useSearchTmdb } from '../../state/movies/hooks';
+import { TextInput } from '../../components';
 
 function Home() {
   const [moviesState, getMoviesState, isLoading] = useTmdMovies();
+  const [searchTextState, setSearchTextState] = useState('');
+  const [searchList, searchMoviesState, isLoadingSearch] = useSearchTmdb();
+
   useEffect(() => {
     getMoviesState();
   }, []);
 
-  if (isLoading) return <p>Loading</p>;
+  useEffect(() => {
+    let searchTimeout;
+
+    if (searchTextState.length > 0) {
+      searchTimeout = setTimeout(() => {
+        searchMoviesState(searchTextState);
+      }, 300);
+    }
+
+    return () => clearTimeout(searchTimeout);
+  }, [searchTextState]);
+
+  const handleSearchChange = (event) => {
+    setSearchTextState(event.target.value);
+  };
+
+  let moviesList;
+
+  if (searchTextState.length > 0) {
+    moviesList = searchList;
+  } else {
+    moviesList = moviesState;
+  }
 
   return (
     <>
       <h1>Home page</h1>
-      {moviesState.map((movie) => (
-        <div className={classNames('red')} key={movie.id}>{movie.title}</div>
-      ))}
+      <TextInput handleChange={handleSearchChange} placeHolder="Search" defaultValue={searchTextState} />
+
+      {
+        isLoading || isLoadingSearch ? (<p>Loading</p>)
+          : (
+            <div className={classNames('movie-catalog')}>
+              {moviesList.map((movie) => (
+                <div key={movie.id}>{movie.title}</div>
+              ))}
+            </div>
+          )
+      }
     </>
   );
 }
