@@ -1,23 +1,23 @@
 import { useState } from 'react';
 import { useStateValue } from '../../index';
 import MoviesService from '../../../services/movies.services';
-import { getMovies } from '../actions';
+import { searchMovies } from '../actions';
 
-const useTmdMovies = () => {
+const useTmdbSearch = () => {
   const [{ movies }, dispatch] = useStateValue();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handlerGetMovies = () => {
+  const handlerSearchMovies = (term) => {
     setIsLoading(true);
 
-    MoviesService.getMovies()
+    MoviesService.searchMovies(term)
       .then((moviesResult) => {
-        dispatch(getMovies(moviesResult.results));
+        dispatch(searchMovies(moviesResult.results));
         setIsLoading(false);
       });
   };
 
-  return [movies.list, handlerGetMovies, isLoading];
+  return [movies.searchList, handlerSearchMovies, isLoading];
 };
 
-export default useTmdMovies;
+export default useTmdbSearch;
