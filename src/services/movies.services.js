@@ -5,6 +5,15 @@ const getMovies = () => ApiCallTMDB({
   method: 'GET',
 });
 
+const searchMovies = (searchTerm) => ApiCallTMDB({
+  url: 'search/company',
+  method: 'GET',
+  params: {
+    query: searchTerm,
+  },
+});
+
 export default {
   getMovies,
+  searchMovies,
 };
