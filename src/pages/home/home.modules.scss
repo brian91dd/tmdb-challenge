@@ -1,11 +1,72 @@
-.movie-catalog {
-  display: flex;
-  flex-wrap: wrap;
+.homepage {
+  .movies-title {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ededed;
+    padding: 0 0 15px;
+    margin: 0 0 15px;
 
-  div {
-    background-color: red;
-    height: 100px;
-    width: 100px;
-    margin: 10px;
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    .filters {
+      display: flex;
+
+      @media (max-width: 560px) {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    .search-input {
+      @media (max-width: 1140px) {
+        width: 150px;
+      }
+
+      @media (max-width: 560px) {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+      }
+    }
+
+    h1 {
+      margin: 0;
+
+      @media (max-width: 768px) {
+        margin-bottom: 20px;
+      }
+    }
+
+    p {
+      margin: 0 0 0 15px;
+      display: flex;
+      align-items: center;
+
+      @media (max-width: 560px) {
+        justify-content: center;
+        margin: 0;
+      }
+    }
+  }
+
+  .movie-catalog {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 50px;
+
+    @media (max-width: 1440px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    @media (max-width: 1140px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(auto-fill, 160px);
+      justify-content: center;
+    }
   }
 }

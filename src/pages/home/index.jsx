@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import './home.modules.scss';
 import { useTmdMovies, useSearchTmdb } from '../../state/movies/hooks';
-import { TextInput, StarRater } from '../../components';
+import { TextInput, StarRater, PosterItem } from '../../components';
 
 function Home() {
   const [moviesState, getMoviesState, isLoading] = useTmdMovies();
@@ -51,23 +51,38 @@ function Home() {
   }
 
   return (
-    <>
-      <h1>Home page</h1>
-      <TextInput handleChange={handleSearchChange} placeHolder="Search" defaultValue={searchTextState} />
-      <StarRater onChange={handleStarChange} selectedUntil={filterStarsState} />
+    <div className="homepage page-container">
+      <div className="movies-title">
+        <h1>The Movie Database</h1>
+        <div className="filters">
+          <TextInput
+            handleChange={handleSearchChange}
+            placeHolder="Search"
+            defaultValue={searchTextState}
+            className="search-input"
+          />
+          <p>Rating: </p>
+          <StarRater onChange={handleStarChange} selectedUntil={filterStarsState} />
+        </div>
+      </div>
       {
         isLoading || isLoadingSearch ? (<p>Loading</p>)
           : (
             <div className={classNames('movie-catalog')}>
               {moviesList.map((movie) => (
-                <div key={movie.id}>
-                  {movie.title}
-                </div>
+                <PosterItem
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.title}
+                  year={movie.release_date.substring(0, 4)}
+                  voteAverage={movie.vote_average}
+                  poster={`${process.env.REACT_APP_TMDB_IMAGES}w200${movie.poster_path}`}
+                />
               ))}
             </div>
           )
       }
-    </>
+    </div>
   );
 }
 
