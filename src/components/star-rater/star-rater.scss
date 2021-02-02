@@ -1,0 +1,52 @@
+.star-rater {
+
+  .rating {
+    height: 30px;
+    display: inline-block;
+
+    &:hover,
+    &.selected-until {
+      button svg:first-child {
+        display: block;
+      }
+
+      button svg:nth-child(2) {
+        display: none;
+      }
+    }
+
+    button {
+      background-color: transparent;
+      border: 0;
+      cursor: pointer;
+      height: 100%;
+      padding: 0 5px;
+      width: 30px;
+
+      svg:first-child {
+        display: none;
+      }
+
+      /* To show next siblings as white */
+      &:hover ~ button {
+        svg:first-child {
+          display: none;
+        }
+
+        svg:nth-child(2) {
+          display: block;
+        }
+      }
+    }
+
+    &:not(:hover) .selected-until ~ button {
+      svg:first-child {
+        display: none;
+      }
+
+      svg:nth-child(2) {
+        display: block;
+      }
+    }
+  }
+}
