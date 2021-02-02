@@ -6,7 +6,7 @@ const getMovies = () => ApiCallTMDB({
 });
 
 const searchMovies = (searchTerm) => ApiCallTMDB({
-  url: 'search/company',
+  url: 'search/movie',
   method: 'GET',
   params: {
     query: searchTerm,

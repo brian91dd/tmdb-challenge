@@ -15,10 +15,7 @@ const moviesReducer = (state = INITIAL_STATE, action) => {
     case SEARCH_MOVIES:
       return {
         ...state,
-        searchList: action.movies.map((movie) => ({
-          title: movie.name,
-          id: movie.id,
-        })),
+        searchList: action.movies,
       };
     default:
       return state;
