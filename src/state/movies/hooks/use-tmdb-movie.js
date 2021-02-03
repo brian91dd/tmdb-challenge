@@ -8,13 +8,15 @@ const useTmdMovies = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handlerGetMovies = () => {
-    setIsLoading(true);
+    if (movies.list.length === 0) {
+      setIsLoading(true);
 
-    MoviesService.getMovies()
-      .then((moviesResult) => {
-        dispatch(getMovies(moviesResult.results));
-        setIsLoading(false);
-      });
+      MoviesService.getMovies()
+        .then((moviesResult) => {
+          dispatch(getMovies(moviesResult.results));
+          setIsLoading(false);
+        });
+    }
   };
 
   return [movies.list, handlerGetMovies, isLoading];
