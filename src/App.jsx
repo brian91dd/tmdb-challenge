@@ -23,6 +23,9 @@ function App() {
         <Route path="/" component={Home} exact />
         <Route path="*" component={NotFound} />
       </Switch>
+      <footer className="footer">
+        <p>By de Diego, Brian Adrián</p>
+      </footer>
     </Router>
   );
 }
