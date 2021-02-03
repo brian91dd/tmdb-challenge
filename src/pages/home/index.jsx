@@ -7,10 +7,11 @@ import {
 } from '../../components';
 
 function Home() {
-  const [moviesState, getMoviesState, isLoading] = useTmdMovies();
+  const [moviesState, getMoviesState, isLoadingState] = useTmdMovies();
   const [searchTextState, setSearchTextState] = useState('');
-  const [searchList, searchMoviesState, isLoadingSearch] = useSearchTmdb();
+  const [searchList, searchMoviesState, isLoadingSearchState] = useSearchTmdb();
   const [filterStarsState, setFilterStarsState] = useState(0);
+  const [firstLoadState, setFirstLoadState] = useState(true);
 
   useEffect(() => {
     getMoviesState();
@@ -22,6 +23,7 @@ function Home() {
     if (searchTextState.length > 0) {
       searchTimeout = setTimeout(() => {
         searchMoviesState(searchTextState);
+        setFirstLoadState(false);
       }, 300);
     }
 
@@ -52,6 +54,9 @@ function Home() {
     );
   }
 
+  const isLoading = isLoadingState || isLoadingSearchState;
+  const notFoundMovies = !isLoading && moviesList.length === 0 && !firstLoadState;
+
   return (
     <div className="homepage page-container">
 
@@ -70,22 +75,27 @@ function Home() {
       </div>
       <div className={classNames('movie-catalog')}>
         {
-          isLoading || isLoadingSearch ? (<Loading />)
-            : (
-              moviesList.map((movie) => (
-                <PosterItem
-                  key={movie.id}
-                  id={movie.id}
-                  title={movie.title}
-                  year={movie.release_date && movie.release_date.substring(0, 4)}
-                  voteAverage={movie.vote_average}
-                  poster={
-                    movie.poster_path ? `${process.env.REACT_APP_TMDB_IMAGES}w200${movie.poster_path}`
-                      : `${process.env.PUBLIC_URL}/no-poster.jpg`
-                  }
-                />
-              ))
-            )
+          isLoading && (<Loading />)
+        }
+        {
+          notFoundMovies && (<p>Movies not found</p>)
+        }
+        {
+          moviesList.length > 0 && (
+            moviesList.map((movie) => (
+              <PosterItem
+                key={movie.id}
+                id={movie.id}
+                title={movie.title}
+                year={movie.release_date && movie.release_date.substring(0, 4)}
+                voteAverage={movie.vote_average}
+                poster={
+                  movie.poster_path ? `${process.env.REACT_APP_TMDB_IMAGES}w200${movie.poster_path}`
+                    : `${process.env.PUBLIC_URL}/no-poster.jpg`
+                }
+              />
+            ))
+          )
         }
       </div>
     </div>
