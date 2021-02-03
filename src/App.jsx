@@ -16,16 +16,10 @@ function App() {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/detail">About</Link>
-          </li>
-          <li>
-            <Link to="/this-does-not-exists">404</Link>
-          </li>
         </ul>
       </nav>
       <Switch>
-        <Route path="/detail" component={Detail} />
+        <Route path="/detail/:id" component={Detail} />
         <Route path="/" component={Home} exact />
         <Route path="*" component={NotFound} />
       </Switch>
