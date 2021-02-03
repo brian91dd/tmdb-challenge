@@ -3,6 +3,7 @@
 .homepage {
   padding-top: 50px;
   margin-bottom: 50px;
+  width: 100%;
 
   .movies-title {
     display: flex;
@@ -71,9 +72,11 @@
 
   .movie-catalog {
     display: grid;
+    grid-gap: 50px;
     grid-template-columns: repeat(auto-fill, 160px);
     justify-content: center;
-    grid-gap: 50px;
+    position: relative;
+    z-index: 0;
 
     @include breakpoint(md) {
       grid-template-columns: repeat(3, 1fr);

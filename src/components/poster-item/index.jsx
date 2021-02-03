@@ -37,13 +37,14 @@ function PosterItem({
 PosterItem.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
+  poster: PropTypes.string,
   year: PropTypes.string.isRequired,
   voteAverage: PropTypes.number,
 };
 
 PosterItem.defaultProps = {
   voteAverage: -1,
+  poster: '/public/no-poster.jpg',
 };
 
 export default PosterItem;

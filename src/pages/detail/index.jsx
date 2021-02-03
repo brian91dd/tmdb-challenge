@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTmdbMovieDetail } from '../../state/movies/hooks';
 import Star from '../../components/icon/icons/star';
+import { Loading } from '../../components';
 import './detail.scss';
 
 function Detail() {
@@ -16,7 +17,7 @@ function Detail() {
     <div className="detail-page">
       {
         (isLoading || !movieDetail) ? (
-          <p>Loading</p>
+          <Loading />
         ) : (
           <div className="movie-content">
             <div className="main-image-container">
