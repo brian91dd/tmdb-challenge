@@ -13,7 +13,13 @@ const searchMovies = (searchTerm) => ApiCallTMDB({
   },
 });
 
+const getMovieDetail = (movieId) => ApiCallTMDB({
+  url: `movie/${movieId}`,
+  method: 'GET',
+});
+
 export default {
   getMovies,
   searchMovies,
+  getMovieDetail,
 };

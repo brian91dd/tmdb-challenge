@@ -1,8 +1,9 @@
-import { GET_MOVIES, SEARCH_MOVIES } from './actions';
+import { GET_MOVIES, SEARCH_MOVIES, GET_MOVIE_DETAIL } from './actions';
 
 export const INITIAL_STATE = {
   list: [],
   searchList: [],
+  moviesDetail: {},
 };
 
 const moviesReducer = (state = INITIAL_STATE, action) => {
@@ -16,6 +17,14 @@ const moviesReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         searchList: action.movies,
+      };
+    case GET_MOVIE_DETAIL:
+      return {
+        ...state,
+        moviesDetail: {
+          ...state.moviesDetail,
+          [action.movie.id]: action.movie,
+        },
       };
     default:
       return state;
