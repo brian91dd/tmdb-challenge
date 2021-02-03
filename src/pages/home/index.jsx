@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import './home.modules.scss';
+import './home.scss';
 import { useTmdMovies, useSearchTmdb } from '../../state/movies/hooks';
 import { TextInput, StarRater, PosterItem } from '../../components';
 
