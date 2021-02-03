@@ -24,7 +24,7 @@ function App() {
         <Route path="*" component={NotFound} />
       </Switch>
       <footer className="footer">
-        <p>By de Diego, Brian Adrián</p>
+        <a href="https://www.linkedin.com/in/briandediego/" rel="noreferrer" target="_blank">By de Diego, Brian Adrián</a>
       </footer>
     </Router>
   );

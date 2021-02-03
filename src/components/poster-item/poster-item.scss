@@ -1,5 +1,6 @@
 .poster-item {
   color: #000;
+  position: relative;
   text-decoration: none;
 
   &:hover {
@@ -15,9 +16,16 @@
     }
   }
 
+  h3 {
+    margin-bottom: 40px;
+  }
+
   .extra-data {
     display: flex;
     justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 
     span {
       display: flex;

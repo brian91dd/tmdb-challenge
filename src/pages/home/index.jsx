@@ -77,7 +77,7 @@ function Home() {
                   key={movie.id}
                   id={movie.id}
                   title={movie.title}
-                  year={movie.release_date.substring(0, 4)}
+                  year={movie.release_date && movie.release_date.substring(0, 4)}
                   voteAverage={movie.vote_average}
                   poster={
                     movie.poster_path ? `${process.env.REACT_APP_TMDB_IMAGES}w200${movie.poster_path}`

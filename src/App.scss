@@ -37,6 +37,15 @@ body #root {
   height: 80px;
   justify-content: center;
   margin-top: auto;
+
+  a {
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+      color: #0859c6;
+    }
+  }
 }
 
 .page-container {
