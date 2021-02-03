@@ -45,8 +45,8 @@ function Home() {
 
   if (filterStarsState) {
     moviesList = moviesList.filter(
-      (movie) => movie.vote_average > filterStarsState * 2 - 2
-        && movie.vote_average < filterStarsState * 2,
+      (movie) => movie.vote_average >= filterStarsState * 2 - 2
+        && movie.vote_average <= filterStarsState * 2,
     );
   }
 
