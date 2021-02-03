@@ -1,3 +1,5 @@
+@import '../../utils/scss/index.scss';
+
 .detail-page {
   $top-from-title: 110px;
 
@@ -8,34 +10,58 @@
   .main-image-container {
     .backdrop-image {
       width: 100%;
-      height: 400px;
+      height: 200px;
       overflow: hidden;
 
+      @include breakpoint(md) {
+        height: 400px
+      }
+
       img {
-        width: 100%;
-        height: 100%;
         filter: blur(3px);
+        height: 100%;
         object-fit: cover;
         object-position: 50% 25%;
-
-        /* To prevent white edges */
-        transform: scale(1.1);
+        transform: scale(1.1); /* To prevent white edges */
+        width: 100%;
       }
     }
   }
 
   .title-container {
-    position: absolute;
+    align-items: center;
+    bottom: (-$top-from-title * 2);
     display: flex;
-    align-items: flex-end;
-    bottom: (-$top-from-title);
+    flex-direction: column;
+    left: 0;
+    position: absolute;
+    width: 100%;
+
+    @include breakpoint(md) {
+      align-items: flex-end;
+      bottom: (-$top-from-title);
+      flex-direction: row;
+      left: auto;
+      width: auto;
+    }
 
     .main-data {
-      margin-left: 10px;
+      margin-left: 0;
+      width: 100%;
+      text-align: center;
+
+      @include breakpoint(md) {
+        margin-left: 10px;
+      }
 
       .rating {
         display: flex;
         align-items: center;
+        justify-content: center;
+
+        @include breakpoint(md) {
+          justify-content: flex-start;
+        }
       }
 
       svg {
@@ -46,6 +72,10 @@
   }
 
   .content {
-    margin-top: $top-from-title + 30px;
+    margin-top: ($top-from-title * 2) + 30px;
+
+    @include breakpoint(md) {
+      margin-top: $top-from-title + 30px;
+    }
   }
 }
