@@ -4,6 +4,11 @@
   $top-from-title: 130px;
 
   margin-bottom: 50px;
+  padding-top: 50px;
+
+  @include breakpoint(md) {
+    padding-top: 0;
+  }
 
   .page-container {
     position: relative;
@@ -12,11 +17,12 @@
   .main-image-container {
     .backdrop-image {
       width: 100%;
-      height: 200px;
       overflow: hidden;
+      display: none;
 
       @include breakpoint(md) {
-        height: 400px
+        height: 400px;
+        display: block;
       }
 
       img {
@@ -32,17 +38,18 @@
 
   .title-container {
     align-items: center;
-    bottom: (-$top-from-title * 2);
+    top: ($top-from-title);
     display: flex;
     flex-direction: column;
     left: 0;
-    position: absolute;
+    position: static;
     width: 100%;
 
     @include breakpoint(md) {
       align-items: flex-end;
-      bottom: (-$top-from-title);
+      position: absolute;
       flex-direction: row;
+      bottom: (-$top-from-title);
       left: auto;
       width: auto;
     }
@@ -75,8 +82,6 @@
   }
 
   .content {
-    margin-top: ($top-from-title * 2) + 30px;
-
     @include breakpoint(md) {
       margin-top: $top-from-title + 30px;
     }
