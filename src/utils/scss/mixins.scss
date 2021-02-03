@@ -1,0 +1,25 @@
+@mixin breakpoint($bp) {
+  @if $bp == xxl {
+    @media only screen and (min-width: 1440px) {
+      @content;
+    }
+  } @else if $bp == xl {
+    @media only screen and (min-width: 1140px) {
+      @content;
+    }
+  } @else if $bp == lg {
+    @media only screen and (min-width: 768px) {
+      @content;
+    }
+  } @else if $bp == md {
+    @media only screen and (min-width: 560px) {
+      @content;
+    }
+  } @else if $bp == sm {
+    @media only screen and (max-width: 559px) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint #{$bp}.";
+  }
+}
