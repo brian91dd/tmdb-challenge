@@ -38,6 +38,8 @@ function Detail() {
               </div>
             </div>
             <div className="page-container content">
+              <h2>Release date:</h2>
+              <p>{movieDetail.release_date}</p>
               <h2>Genre:</h2>
               <p>{movieDetail.genres.map((genre) => genre.name).join(', ')}</p>
               <h2>Overview</h2>

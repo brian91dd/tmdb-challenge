@@ -1,7 +1,7 @@
 @import '../../utils/scss/index.scss';
 
 .detail-page {
-  $top-from-title: 110px;
+  $top-from-title: 130px;
 
   margin-bottom: 50px;
 
@@ -54,6 +54,7 @@
 
       @include breakpoint(md) {
         margin-left: 10px;
+        text-align: left;
       }
 
       .rating {

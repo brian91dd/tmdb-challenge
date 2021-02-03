@@ -16,6 +16,9 @@ const useTmdMovies = (movieId) => {
         .then((movieResult) => {
           dispatch(getMovieDetail(movieResult));
           setIsLoading(false);
+        })
+        .catch(() => {
+          window.location = '/not-found';
         });
     }
   };
