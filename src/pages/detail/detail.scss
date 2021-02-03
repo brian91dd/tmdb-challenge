@@ -1,0 +1,51 @@
+.detail-page {
+  $top-from-title: 110px;
+
+  .page-container {
+    position: relative;
+  }
+
+  .main-image-container {
+    .backdrop-image {
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        filter: blur(3px);
+        object-fit: cover;
+        object-position: 50% 25%;
+
+        /* To prevent white edges */
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .title-container {
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    bottom: (-$top-from-title);
+
+    .main-data {
+      margin-left: 10px;
+
+      .rating {
+        display: flex;
+        align-items: center;
+      }
+
+      svg {
+        width: 15px;
+        margin: 0 0 3px 5px;
+      }
+    }
+  }
+
+  .content {
+    margin-top: $top-from-title + 30px;
+  }
+}
