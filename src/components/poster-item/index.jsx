@@ -35,11 +35,11 @@ function PosterItem({
 }
 
 PosterItem.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  poster: PropTypes.number.isRequired,
+  poster: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
-  voteAverage: PropTypes.string,
+  voteAverage: PropTypes.number,
 };
 
 PosterItem.defaultProps = {
