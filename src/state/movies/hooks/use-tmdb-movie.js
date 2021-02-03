@@ -11,7 +11,9 @@ const useTmdMovies = () => {
     if (movies.list.length === 0) {
       setIsLoading(true);
 
-      MoviesService.getMovies()
+      MoviesService.getMovies({
+        sort_by: 'popularity.desc',
+      })
         .then((moviesResult) => {
           dispatch(getMovies(moviesResult.results));
           setIsLoading(false);

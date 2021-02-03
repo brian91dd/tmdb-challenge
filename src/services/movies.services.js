@@ -1,8 +1,9 @@
 import { ApiCallTMDB } from '../utils/fetch';
 
-const getMovies = () => ApiCallTMDB({
+const getMovies = (params) => ApiCallTMDB({
   url: 'discover/movie',
   method: 'GET',
+  params,
 });
 
 const searchMovies = (searchTerm) => ApiCallTMDB({
